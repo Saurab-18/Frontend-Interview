@@ -24,3 +24,23 @@
 // }
 // let array = [2, 3, 5, 7, 3, 1, 9, 7];
 // evenNumbers(array);
+
+// 3. How to check whether a string is palindrome or not ?
+// function checkPalindrome(str) {
+//   let reversed = str.split("").reverse().join("");
+//   if (str == reversed) {
+//     return "Yes its Paindrome";
+//   }
+//   return "No its not palindrome";
+// }
+// console.log(checkPalindrome("moom"));
+
+// 4. Find the factorial of given number ?
+// function factorial(num) {
+//   let result = 1;
+//   for (let i = 1; i <= num; i++) {
+//     result = result * i;
+//   }
+//   return result;
+// }
+// console.log(factorial(3));
