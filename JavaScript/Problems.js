@@ -44,3 +44,35 @@
 //   return result;
 // }
 // console.log(factorial(3));
+
+// 5. Program to find longest word in a given sentence ?
+// const longestWord = (sentence) => {
+//   let strToArr = sentence.split(" ");
+//   let longest = 0;
+//   let index = -1;
+//   for (let i = 0; i < strToArr.length; i++) {
+//     if (strToArr[i].length > longest) {
+//       longest = strToArr[i].length;
+//       index = i;
+//     }
+//   }
+//   return strToArr[index];
+// };
+
+// let result = longestWord("Hi Iam Saikrishna Iam a UI Developer");
+// console.log(result);
+
+// 6. Write a JavaScript program to find the maximum number in an array.
+
+// const maxNumber = (arr) => {
+//   //   return Math.max(...arr);
+//   let max = 0;
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i] > max) {
+//       max = arr[i];
+//     }
+//   }
+//   return max;
+// };
+
+// console.log(maxNumber([5, 10, 31]));
