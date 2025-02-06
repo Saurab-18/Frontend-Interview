@@ -76,3 +76,25 @@
 // };
 
 // console.log(maxNumber([5, 10, 31]));
+
+// 7 . Write a JavaScript function to check if a given number is prime.
+// function isPrime(num) {
+//   for (let i = 2; i <= Math.sqrt(num); i++) {
+//     if (num % i == 0) {
+//       return false;
+//     }
+//   }
+//   return true;
+// }
+
+// console.log(isPrime(7));
+
+// 8. Program to find Reverse of a string without using built-in method ?
+// function reverseString(str) {
+//   let reversedString = "";
+//   for (let i = str.length - 1; i >= 0; i--) {
+//     reversedString += str[i];
+//   }
+//   return reversedString;
+// }
+// console.log(reverseString("Saurab"));
