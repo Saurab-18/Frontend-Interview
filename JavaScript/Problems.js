@@ -98,3 +98,31 @@
 //   return reversedString;
 // }
 // console.log(reverseString("Saurab"));
+
+// 9. Find the smallest word in a given sentence ?
+// function smallestWord(str) {
+//   let strToArr = str.split(" ");
+//   let smallest = strToArr[0];
+//   for (let i = 1; i < strToArr.length; i++) {
+//     if (strToArr[i].length < smallest.length) {
+//       smallest = strToArr[i];
+//     }
+//   }
+//   return smallest;
+// }
+
+// console.log(smallestWord("Find the smallest word to"));
+
+// 10. Write a function sumOfThirds(arr), which takes an
+// array arr as an argument. This function should return a sum of
+// every third number in the array, starting from the first one.
+
+// function sumOfThirds(arr) {
+//   if (arr.length <= 3) return 0;
+//   let sum = 0;
+//   for (let i = 0; i < arr.length; i += 3) {
+//     sum += arr[i];
+//   }
+//   return sum;
+// }
+// console.log(sumOfThirds([1, 2, 3, 4]));
