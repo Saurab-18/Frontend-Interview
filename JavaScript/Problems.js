@@ -126,3 +126,38 @@
 //   return sum;
 // }
 // console.log(sumOfThirds([1, 2, 3, 4]));
+
+// 11. Write a JavaScript function that returns the Fibonacci
+// sequence up to a given number of terms.
+
+// function Fibonacci(num) {
+//   let arr = [];
+//   if (num <= 0) return arr;
+//   if (num >= 1) arr.push(0);
+//   if (num >= 2) arr.push(1);
+//   for (let i = 2; i < num; i++) {
+//     arr.push(arr[i - 1] + arr[i - 2]);
+//   }
+//   return arr;
+// }
+// console.log(Fibonacci(6));
+
+// 12. Find the max count of consecutive 1’s in an array
+
+// function consecutiveOnes(arr) {
+//   let count = 0;
+//   let maxCount = 0;
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i] == 1) {
+//       count++;
+//       if (count > maxCount) {
+//         maxCount = count;
+//       }
+//     } else {
+//       count = 0;
+//     }
+//   }
+//   return maxCount;
+// }
+
+// console.log(consecutiveOnes([1, 1, 9, 1, 9, 19, 7, 1, 1, 1, 2, 5, 1]));
