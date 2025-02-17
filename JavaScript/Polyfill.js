@@ -87,3 +87,59 @@
 //   return (acc = acc + cur);
 // }, 0);
 // console.log(reduceResult);
+
+Promise.polyAll = (promises) => {
+  return new Promise((resolve, reject) => {
+    let results = [];
+    if (!promises.length) {
+      resolve(results);
+      return;
+    }
+
+    let pending = promises.length;
+
+    promises.forEach((promise, i) => {
+      Promise.resolve(promise).then((res) => {
+        results[i] = res;
+        pending--;
+        if (pending == 0) {
+          resolve(results);
+        }
+      }, reject);
+    });
+  });
+};
+
+Promise.allSettled = (promises) => {
+  return new Promise((resolve, reject) => {
+    let pending = promises.length;
+    let results = [];
+    if (pending == 0) {
+      resolve(results);
+      return;
+    }
+    promises.forEach((promise, index) => {
+      Promise.resolve(promise)
+        .then((value) => {
+          results[i] = { status: "Fullfilled", value: value };
+        })
+        .catch((err) => {
+          results[i] = { status: "Rejected", value: err };
+        })
+        .finally(() => {
+          pending--;
+          if (pending == 0) {
+            resolve(results);
+          }
+        });
+    });
+  });
+};
+
+Promise.polyRace = (promises) => {
+  return new Promise((resolve, reject) => {
+    for (let promise of promises) {
+      Promise.resolve(promise).then(resolve).catch(reject);
+    }
+  });
+};

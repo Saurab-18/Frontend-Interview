@@ -19,6 +19,31 @@ class LinkedList {
     return this.size;
   }
 
+  deleteHead() {
+    if (this.head == null) return null;
+    let temp = this.head;
+    this.head = this.head.next;
+    this.size--;
+    return temp.value;
+  }
+
+  deleteTail() {
+    if (this.isEmpty()) return null;
+    let removedValue;
+    if (this.head == null) {
+      removedValue = this.head.value;
+    } else {
+      let prev = this.head;
+      while (prev.next.next) {
+        prev = prev.next;
+      }
+      removedValue = prev.next.value;
+      prev.next = null;
+    }
+    this.size--;
+    return removedValue;
+  }
+
   prepend(value) {
     let node = new Node(value);
     if (this.isEmpty()) {
@@ -156,4 +181,8 @@ list.prepend(15);
 list.prepend(12);
 list.append(21);
 list.insert(54, 3);
+console.log(list.print());
+list.deleteHead();
+list.deleteTail();
+list.removeFrom(2);
 console.log(list.print());
