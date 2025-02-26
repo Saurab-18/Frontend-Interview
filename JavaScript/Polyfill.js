@@ -88,58 +88,114 @@
 // }, 0);
 // console.log(reduceResult);
 
-Promise.polyAll = (promises) => {
-  return new Promise((resolve, reject) => {
-    let results = [];
-    if (!promises.length) {
-      resolve(results);
-      return;
-    }
+// Polyfill for Promise.all()
 
-    let pending = promises.length;
+// Promise.polyAll = (promises) => {
+//   return new Promise((resolve, reject) => {
+//     let results = [];
+//     if (!promises.length) {
+//       resolve(results);
+//       return;
+//     }
 
-    promises.forEach((promise, i) => {
-      Promise.resolve(promise).then((res) => {
-        results[i] = res;
-        pending--;
-        if (pending == 0) {
-          resolve(results);
-        }
-      }, reject);
-    });
-  });
-};
+//     let pending = promises.length;
 
-Promise.allSettled = (promises) => {
-  return new Promise((resolve, reject) => {
-    let pending = promises.length;
-    let results = [];
-    if (pending == 0) {
-      resolve(results);
-      return;
-    }
-    promises.forEach((promise, index) => {
-      Promise.resolve(promise)
-        .then((value) => {
-          results[i] = { status: "Fullfilled", value: value };
-        })
-        .catch((err) => {
-          results[i] = { status: "Rejected", value: err };
-        })
-        .finally(() => {
-          pending--;
-          if (pending == 0) {
-            resolve(results);
-          }
-        });
-    });
-  });
-};
+//     promises.forEach((promise, i) => {
+//       Promise.resolve(promise).then((res) => {
+//         results[i] = res;
+//         pending--;
+//         if (pending == 0) {
+//           resolve(results);
+//         }
+//       }, reject);
+//     });
+//   });
+// };
 
-Promise.polyRace = (promises) => {
-  return new Promise((resolve, reject) => {
-    for (let promise of promises) {
-      Promise.resolve(promise).then(resolve).catch(reject);
-    }
-  });
-};
+// Polyfill for Promise.allSettled()
+
+// Promise.allSettled = (promises) => {
+//   return new Promise((resolve, reject) => {
+//     let pending = promises.length;
+//     let results = [];
+//     if (pending == 0) {
+//       resolve(results);
+//       return;
+//     }
+//     promises.forEach((promise, index) => {
+//       Promise.resolve(promise)
+//         .then((value) => {
+//           results[i] = { status: "Fullfilled", value: value };
+//         })
+//         .catch((err) => {
+//           results[i] = { status: "Rejected", value: err };
+//         })
+//         .finally(() => {
+//           pending--;
+//           if (pending == 0) {
+//             resolve(results);
+//           }
+//         });
+//     });
+//   });
+// };
+
+//Polyfill for Promise.race()
+
+// Promise.polyRace = (promises) => {
+//   return new Promise((resolve, reject) => {
+//     for (let promise of promises) {
+//       Promise.resolve(promise).then(resolve).catch(reject);
+//     }
+//   });
+// };
+
+// Polyfill for Promise.any()
+
+// Promise.PolyAny = function (promises) {
+//   return new Promise((resolve, reject) => {
+//     let errors = [];
+//     let pending = promises.length;
+//     if (pending == 0) {
+//       reject(new AggregateError([], "No Promises to be setteled"));
+//       return;
+//     }
+//     promises.forEach((promise, i) => {
+//       Promise.resolve(promise)
+//         .then(resolve)
+//         .catch((error) => {
+//           errors.push(error);
+//           pending--;
+//           if (pending == 0) {
+//             reject(new AggregateError(errors));
+//           }
+//         });
+//     });
+//   });
+// };
+
+// Poyfill for Promise
+
+// Polyfill for Call
+
+// Function.prototype.PolyCall = function (thisArgs, ...argsArray) {
+//   thisArgs = thisArgs ?? globalThis;
+//   let uniqueKey = Symbol();
+//   thisArgs[uniqueKey] = this;
+//   let result = thisArgs[uniqueKey](...argsArray);
+//   delete thisArgs[uniqueKey];
+//   return result;
+// };
+
+// Polyfill for Apply
+
+// Function.prototype.PolyApply = function (thisArgs, argsArray = []) {
+//   thisArgs = thisArgs ?? globalThis;
+//   let uniqueKey = Symbol();
+//   thisArgs[uniqueKey] = this;
+//   let result = thisArgs[uniqueKey](...argsArray);
+//   delete thisArgs[uniqueKey];
+//   return result;
+// };
+
+// Polyfill for Bind
