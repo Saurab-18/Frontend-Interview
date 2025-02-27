@@ -161,3 +161,32 @@
 // }
 
 // console.log(consecutiveOnes([1, 1, 9, 1, 9, 19, 7, 1, 1, 1, 2, 5, 1]));
+
+// 13. Given 2 arrays that are sorted [0,3,4,31] and [4,6,30]. Merge them and sort [0,3,4,4,6,30,31] ?
+
+// function mergeAndSort(nums1, nums2) {
+//   let mergedArray = [...nums1, ...nums2];
+//   mergedArray.sort((a, b) => a - b);
+//   return mergedArray;
+// }
+
+// let result13 = mergeAndSort([0, 3, 4, 31], [4, 6, 30]);
+// console.log(result13);
+
+// 14. Create a function which will accepts two arrays arr1 and arr2. The function should return true if every value in arr1 has its corresponding value squared in array2. The frequency of values must be same. (Effecient)
+
+// function isSameFrequency(arr1, arr2) {
+//   if (arr1.length !== arr2.length) {
+//     return false;
+//   }
+//   arr1.sort((a, b) => a - b);
+//   arr2.sort((a, b) => a - b);
+//   if (arr1[0] * arr1[0] == arr2[0]) {
+//     return true;
+//   } else {
+//     return flse;
+//   }
+// }
+
+// let result14 = isSameFrequency([1, 2, 3], [1, 9, 4]);
+// console.log(result14);
