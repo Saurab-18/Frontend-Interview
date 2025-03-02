@@ -175,18 +175,85 @@
 
 // 14. Create a function which will accepts two arrays arr1 and arr2. The function should return true if every value in arr1 has its corresponding value squared in array2. The frequency of values must be same. (Effecient)
 
-// function isSameFrequency(arr1, arr2) {
-//   if (arr1.length !== arr2.length) {
-//     return false;
-//   }
-//   arr1.sort((a, b) => a - b);
-//   arr2.sort((a, b) => a - b);
-//   if (arr1[0] * arr1[0] == arr2[0]) {
-//     return true;
-//   } else {
-//     return flse;
-//   }
-// }
+function isSameFrequency(arr1, arr2) {
+  if (arr1.length !== arr2.length) {
+    return false;
+  }
+  arr1.sort((a, b) => a - b);
+  arr2.sort((a, b) => a - b);
+  if (arr1[0] * arr1[0] == arr2[0]) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 // let result14 = isSameFrequency([1, 2, 3], [1, 9, 4]);
 // console.log(result14);
+
+// 15. Given two strings. Find if one string can be formed by rearranging the letters of other string. (Effecient)
+
+function isStringCreated(str1, str2) {
+  if (str1.length !== str2.length) {
+    return false;
+  }
+  str1ToArr = str1.split("").sort().join("");
+  str2ToArr = str2.split("").sort().join("");
+  if (str1ToArr == str2ToArr) {
+    return true;
+  }
+  return false;
+}
+
+// let result15 = isStringCreated("anagram", "nagaram");
+// console.log(result15);
+
+// 16. Write logic to get unique objects from below array ?
+
+function getUnique(arr) {
+  let uniqueArr = [...new Set(arr.map((item) => item.name))];
+  return uniqueArr;
+}
+
+let result16 = getUnique([
+  { name: "sai" },
+  { name: "Nang" },
+  { name: "sai" },
+  { name: "Nang" },
+  { name: "111111" },
+]);
+// console.log(result16);
+
+// 17. Given a string, write a javascript function to count the occurrences of each character in the string.
+
+function countCharacters(str) {
+  let obj = {};
+  for (let i = 0; i < str.length; i++) {
+    if (!obj[str[i]]) {
+      obj[str[i]] = 1;
+    } else {
+      obj[str[i]]++;
+    }
+  }
+  return obj;
+}
+
+// let result17 = countCharacters("helaalo");
+// console.log(result17);
+
+// 18. Implement a javascript function that flattens a nested array into a single-dimensional array.
+
+function flatten(arr) {
+  let result = [];
+  for (let item of arr) {
+    if (Array.isArray(item)) {
+      result.push(...flatten(item));
+    } else {
+      result.push(item);
+    }
+  }
+  return result;
+}
+
+let result18 = flatten([1, [2, [3, 4], [7, 5]], 6]);
+console.log(result18);
