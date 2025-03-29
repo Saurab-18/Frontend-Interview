@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <div id="GrandParent">
+      <h5>GrandParent</h5>
+      <div id="parent">
+        <h5>Parent</h5>
+        <div id="child">
+          <h5>Child</h5>
+        </div>
+      </div>
+    </div> -->
+    <script src="./Oops.js"></script>
+    <div id="root"></div>
+  </body>
+  <script>
+    const heading = document.createElement("h1");
+    heading.innerHTML = "Hello World";
+    const divElement = document.getElementById("root");
+    divElement.appendChild(heading);
+  </script>
+</html>
+<style>
+  #GrandParent {
+    border: 2px solid blue;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* margin: 0 auto; */
+  }
+  #parent {
+    border: 2px solid red;
+    height: 200px;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #child {
+    border: 2px solid yellow;
+    width: 80%;
+    height: 100px;
+  }
+</style>

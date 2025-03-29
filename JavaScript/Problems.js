@@ -256,4 +256,42 @@ function flatten(arr) {
 }
 
 let result18 = flatten([1, [2, [3, 4], [7, 5]], 6]);
-console.log(result18);
+// console.log(result18);
+
+// 19. Write a javascript function that reverses the order of words in a sentence without using the built-in reverse() method.
+
+function reverseWords(str) {
+  let result = [];
+  let strToArr = str.split(" ");
+  for (let i = strToArr.length - 1; i >= 0; i--) {
+    result.push(strToArr[i]);
+  }
+  return result;
+}
+let result19 = reverseWords("ChatGPT is awesome");
+// console.log(result19);
+
+// 20. Write a JavaScript program to find the largest element in a nested array.
+// function findLargestElement(arr) {
+//   arr.console.log("1", arr);
+// }
+// let result20 = findLargestElement([
+//   [3, 4, 58],
+//   [709, 8, 9, [10, 11]],
+//   [111, 2],
+// ]);
+// console.log(result20);
+
+// 21. Given an array, return an array where the each value is the product of the next two items: E.g. [3, 4, 5] -> [20, 15, 12]
+
+const maskCreditCard = (cardNumber) => {
+  if (cardNumber.length <= 4) {
+    return cardNumber;
+  }
+  let hashCount = cardNumber.length - 4;
+  cardNumber.slice(hashCount, cardNumber.length);
+  return cardNumber;
+};
+
+let result = maskCreditCard("12345678833876386386");
+console.log(result);
