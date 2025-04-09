@@ -1,18 +1,23 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  const handleOnChange = (e) => {
-    const { name, value } = e.target;
-    if (name === "email") {
-      setEmail(value);
-    } else if (name === "password") {
-      setPassword(value);
-    }
-    console.log({ email: value, password });
+  const [loginDetails, setLoginDetails] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    setLoginDetails({ ...loginDetails, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    localStorage.setItem("User", JSON.stringify(loginDetails));
+    const user = localStorage.getItem("User") ? true : false;
+    user ? navigate("/posts") : navigate("/login");
   };
 
   return (
@@ -27,7 +32,8 @@ export const Login = () => {
             <input
               type="email"
               name="email"
-              value={email}
+              value={loginDetails.email}
+              onChange={handleChange}
               className="w-full p-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
               placeholder="Enter your email"
             />
@@ -37,17 +43,16 @@ export const Login = () => {
             <input
               type="password"
               name="password"
-              value={password}
-              onChange={(e) => {
-                handleOnChange(e);
-              }}
+              value={loginDetails.password}
+              onChange={handleChange}
               className="w-full p-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
               placeholder="Enter your password"
             />
           </div>
           <button
-            type="submit"
+            type="button"
             className="w-full bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600 transition duration-300"
+            onClick={handleSubmit}
           >
             Login
           </button>

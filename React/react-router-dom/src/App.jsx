@@ -8,6 +8,7 @@ import { Details } from "./pages/details";
 import { Login } from "./pages/Login";
 import { Error } from "./pages/error";
 import { SignUp } from "./pages/signUp";
+import { Form } from "./pages/form";
 
 function App() {
   const router = createBrowserRouter([
@@ -25,11 +26,7 @@ function App() {
         },
         {
           path: "/posts",
-          element: (
-            <RequireAuth>
-              <Posts />
-            </RequireAuth>
-          ),
+          element: <Posts />,
         },
         {
           path: "/details/:postId",
@@ -44,6 +41,10 @@ function App() {
     {
       element: <SignUp />,
       path: "/signUp",
+    },
+    {
+      element: <Form />,
+      path: "/form",
     },
   ]);
 
