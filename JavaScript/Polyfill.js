@@ -18,14 +18,14 @@ let x = onlyOnce(() => {
 
 // Polyfill of Memoize fuction
 
-function memoize(cb) {
+export default function memoize(func) {
   let cache = new Map();
   return function (...args) {
     let key = JSON.stringify(args);
     if (cache.has(key)) {
       return cache.get(key);
     }
-    let result = cb(...args);
+    let result = func.apply(this, args);
     cache.set(key, result);
     return result;
   };
@@ -190,7 +190,7 @@ Function.prototype.PolyCall = function (thisArgs, ...argsArray) {
 
 // Polyfill for Apply
 
-Function.prototype.PolyApply = function (thisArgs, argsArray = []) {
+Function.prototype.PolyApply = function (thisArgs, argsArray) {
   thisArgs = thisArgs ?? globalThis;
   let uniqueKey = Symbol();
   thisArgs[uniqueKey] = this;
@@ -198,6 +198,12 @@ Function.prototype.PolyApply = function (thisArgs, argsArray = []) {
   delete thisArgs[uniqueKey];
   return result;
 };
+
+function greet(greeting, name) {
+  return `${greeting}, ${name}`;
+}
+
+console.log(greet.PolyApply(null, ["Hello", "Alice"]));
 
 // <-- TODO !-->
 // Polyfill for Bind

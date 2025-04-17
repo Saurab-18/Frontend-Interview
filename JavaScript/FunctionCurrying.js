@@ -38,7 +38,7 @@
 
 // Convert a normal function into curried Function
 
-// function cuury(fn) {
+// function curry(fn) {
 //   return function curriedFunction(...args) {
 //     if (args.length >= fn.length) {
 //       return fn(...args);
