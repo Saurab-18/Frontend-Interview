@@ -1,0 +1,44 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "Why Remote Work Is Here to Stay",
+      "content": "Remote work has transformed the modern workplace, increasing flexibility and productivity for many...",
+      "author": "Jane Doe",
+      "date": "2025-04-28",
+      "likes": 154
+    },
+    {
+      "id": 2,
+      "title": "Top 5 JavaScript Frameworks in 2025",
+      "content": "From React to SolidJS, we explore the top frameworks developers are choosing this year...",
+      "author": "Alex Smith",
+      "date": "2025-04-26",
+      "likes": 230
+    },
+    {
+      "id": 3,
+      "title": "The Future of AI in Creative Industries",
+      "content": "AI is not just a tool—it’s becoming a collaborator in design, music, and storytelling...",
+      "author": "Maria Chen",
+      "date": "2025-04-30",
+      "likes": 189
+    },
+    {
+      "id": 4,
+      "title": "How to Stay Productive Working From Home",
+      "content": "Balancing work and life in the same space can be tricky. Here are some tips to stay focused...",
+      "author": "Ryan Patel",
+      "date": "2025-04-25",
+      "likes": 97
+    },
+    {
+      "id": 5,
+      "title": "Exploring the Ethics of AI",
+      "content": "With great power comes great responsibility. How do we ensure AI is developed ethically?",
+      "author": "Leila Torres",
+      "date": "2025-04-29",
+      "likes": 275
+    }
+  ]
+}
