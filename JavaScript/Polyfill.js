@@ -114,31 +114,32 @@ Promise.polyAll = (promises) => {
 
 // Polyfill for Promise.allSettled()
 
-Promise.allSettled = (promises) => {
-  return new Promise((resolve, reject) => {
-    let pending = promises.length;
-    let results = [];
-    if (pending == 0) {
-      resolve(results);
-      return;
+export default function promiseAllSettled(iterable) {
+  let promises = Array.from(iterable)
+  let results = []
+  return new Promise((resolve,reject) => {
+    let pending = promises.length
+    if(pending === 0){
+      resolve(results)
+      return
     }
-    promises.forEach((promise, index) => {
+    promises.forEach((promise,i) => {
       Promise.resolve(promise)
-        .then((value) => {
-          results[i] = { status: "Fullfilled", value: value };
-        })
-        .catch((err) => {
-          results[i] = { status: "Rejected", value: err };
-        })
-        .finally(() => {
-          pending--;
-          if (pending == 0) {
-            resolve(results);
-          }
-        });
-    });
-  });
-};
+      .then((res) => {
+        results[i] = {status:'fulfilled', value: res}
+      })
+      .catch((err) => {
+        results[i] = {status: 'rejected', reason:err}
+      })
+      .finally(() => {
+        pending--
+        if(pending == 0){
+          resolve(results)
+        }
+      })
+    })
+  })
+}
 
 //Polyfill for Promise.race()
 
@@ -234,3 +235,28 @@ function throttle(callback, delay) {
     }
   };
 }
+
+
+const createUser = ({ firstName, lastName, email }) => ({
+  firstName,
+  lastName,
+  email,
+  fullName() {
+    return `${this.firstName} ${this.lastName}`;
+  },
+});
+
+const user1 = createUser({
+  firstName: "John",
+  lastName: "Doe",
+  email: "john@doe.com"
+});
+
+const user2 = createUser({
+  firstName: "Jane",
+  lastName: "Doe",
+  email: "jane@doe.com"
+});
+
+console.log(user1);
+console.log(user2);
