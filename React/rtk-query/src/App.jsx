@@ -1,13 +1,28 @@
 import "./App.css";
-import { useGetAllTodosQuery } from "./store/apiSlice";
+import { useState } from "react";
+import { useAddTodoMutation, useGetAllTodosQuery } from "./store/apiSlice";
 import { useDeleteTodoMutation } from "./store/deleteApiSlice";
 
 function App() {
-  const { data, error } = useGetAllTodosQuery();
+  const [todo, setTodo] = useState("");
+
+  const { data, error, refetch } = useGetAllTodosQuery();
   const [deleteTodo] = useDeleteTodoMutation();
+  const [addTodo] = useAddTodoMutation();
 
   const handleDeleteTodo = (id) => {
     deleteTodo(id);
+  };
+
+  const handleAddTodo = () => {
+    setTodo("");
+    addTodo({
+      completed: false,
+      userId: 1111,
+      todo: todo,
+    }).then(() => {
+      refetch();
+    });
   };
 
   if (error) {
@@ -21,6 +36,13 @@ function App() {
   return (
     <>
       <h1>Learning RTK Query</h1>
+      <input
+        type="text"
+        placeholder="Add Todo"
+        value={todo}
+        onChange={(e) => setTodo(e.target.value)}
+      />
+      <button onClick={handleAddTodo}>Add Todo</button>
       {data &&
         data.map((todo) => {
           return (

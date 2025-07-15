@@ -2,6 +2,9 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const apiSlice = createApi({
   reducerPath: "getTodo",
+  tagTypes: ["getAllTodosTag"],
+  refetchOnFocus: true,
+  refetchOnReconnect: true,
   baseQuery: fetchBaseQuery({
     baseUrl: `https://dummyjson.com/`,
   }),
@@ -11,6 +14,7 @@ export const apiSlice = createApi({
         query: () => {
           return `todos`;
         },
+        providesTags: ["getAllTodosTag"],
         transformResponse: function (data) {
           const todos = data?.todos;
           return todos || [];
@@ -19,8 +23,19 @@ export const apiSlice = createApi({
       getTodo: (id) => {
         return `todos/${id}`;
       },
+      addTodo: builder.mutation({
+        query: (params) => {
+          return {
+            url: `todos/add`,
+            method: "POST",
+            body: params,
+          };
+        },
+        invalidatesTags: ["getAllTodosTag"],
+      }),
     };
   },
 });
 
-export const { useGetAllTodosQuery, useLazyGetTodoQuery } = apiSlice;
+export const { useGetAllTodosQuery, useLazyGetTodoQuery, useAddTodoMutation } =
+  apiSlice;

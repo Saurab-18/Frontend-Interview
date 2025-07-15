@@ -21,4 +21,34 @@
 //   },
 // });
 
-// export const { useDeleteTodoMutation } = deleteApiSlice;
+import { apiSlice } from "./apiSlice";
+
+export const deleteApiSlice = apiSlice.injectEndpoints({
+  endpoints: (builder) => {
+    return {
+      deleteTodo: builder.mutation({
+        query: (id) => ({
+          url: `todos/${id}`,
+          method: "DELETE",
+        }),
+        onQueryStarted: function (id, { dispatch, queryFulfilled }) {
+          const action = dispatch(
+            apiSlice.util.updateQueryData(
+              "getAllTodos",
+              undefined,
+              function (todos) {
+                const newTodos = todos.filter((todo) => todo.id !== id);
+                return newTodos;
+              }
+            )
+          );
+          queryFulfilled.catch(() => {
+            action.undo();
+          });
+        },
+      }),
+    };
+  },
+});
+
+export const { useDeleteTodoMutation } = deleteApiSlice;
